@@ -81,7 +81,8 @@ function deleteTask(taskId) {
   const completed = document.querySelectorAll(
     'input[type="checkbox"]:checked'
   ).length;
-  taskCounter.innerHTML = total;
+
+  tasksCounter.innerHTML = total;
   CompletedtasksCounter.innerHTML = completed;
   PendingtasksCounter.innerHTML = total - completed;
   renderList();
@@ -107,7 +108,7 @@ function handleClicklistener(e) {
   const completed = document.querySelectorAll(
     'input[type="checkbox"]:checked'
   ).length;
-  taskCounter.innerHTML = total;
+  tasksCounter.innerHTML = total;
   CompletedtasksCounter.innerHTML = completed;
   PendingtasksCounter.innerHTML = total - completed;
 }
