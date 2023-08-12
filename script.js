@@ -9,14 +9,40 @@ const clearall = document.querySelector(".clear-all");
 const totalCounter = document.getElementById("taskCounter");
 
 inputbox.onkeyup = () => {
-  let UserEnterValue = inputbox.value; //Store user entered value
+  let UserEnterValue = inputbox.value;
   if (UserEnterValue.trim() != 0) {
-    //if the user value isn't only spaces
-    add.style.display = "block"; //add button show
+    s;
+    add.style.display = "block";
   } else {
-    add.style.display = "none"; //add button hide
+    add.style.display = "none";
   }
 };
+add.onclick = () => {
+  const task = {
+    text: inputbox.value,
+    id: Date.now().toString(),
+    done: false,
+  };
+  addTask(task);
+  inputbox.value = "";
+};
+function addTask(task) {
+  if (task) {
+    tasks.push(task);
+    renderList();
+
+    return;
+  }
+}
+function renderList() {
+  taskList.innerHTML = "";
+
+  for (let i = 0; i < tasks.length; i++) {
+    addTaskToDom(tasks[i]);
+  }
+  calculate();
+}
+
 function addTaskToDom(task) {
   const li = document.createElement("li");
   li.innerHTML = `
@@ -33,32 +59,24 @@ function addTaskToDom(task) {
   taskList.append(li);
   add.style.display = "none";
 }
-function renderList() {
-  taskList.innerHTML = "";
+function handleClicklistener(e) {
+  const target = e.target;
+  console.log(target);
 
-  for (let i = 0; i < tasks.length; i++) {
-    addTaskToDom(tasks[i]);
-  }
-  calculate();
-}
+  if (target.className == "delete") {
+    const taskId = target.dataset.id;
+    deleteTask(taskId);
+    showNotification("clicked on delete ");
 
-function addTask(task) {
-  if (task) {
-    tasks.push(task);
-    renderList();
+    return;
+  } else if (target.className == "custum-checkbox") {
+    const taskId = target.id;
+    toggleTask(taskId);
 
     return;
   }
 }
-add.onclick = () => {
-  const task = {
-    text: inputbox.value,
-    id: Date.now().toString(),
-    done: false,
-  };
-  addTask(task);
-  inputbox.value = "";
-};
+
 function toggleTask(taskId) {
   const task = tasks.filter(function (task) {
     return task.id == taskId;
@@ -81,23 +99,7 @@ function deleteTask(taskId) {
 
   renderList();
 }
-function handleClicklistener(e) {
-  const target = e.target;
-  console.log(target);
 
-  if (target.className == "delete") {
-    const taskId = target.dataset.id;
-    deleteTask(taskId);
-    showNotification("clicked on delete ");
-
-    return;
-  } else if (target.className == "custum-checkbox") {
-    const taskId = target.id;
-    toggleTask(taskId);
-
-    return;
-  }
-}
 // Complete all task is used for completer all task
 document.querySelector(".complete").onclick = () => {
   checked(true);
@@ -106,10 +108,7 @@ document.querySelector(".complete").onclick = () => {
 document.querySelector(".uncomplete").onclick = () => {
   checked(false);
 };
-clearall.onclick = () => {
-  tasks = []; //empty the array
-  renderList();
-};
+
 function checked(params) {
   var inputElems = document.querySelectorAll(".custum-checkbox"); // Select selected task in list
   for (var i = 0; i < tasks.length; i++) {
@@ -121,6 +120,10 @@ function checked(params) {
   }
   calculate();
 }
+clearall.onclick = () => {
+  tasks = []; //empty the array
+  renderList();
+};
 document.addEventListener("click", handleClicklistener);
 
 function calculate() {
