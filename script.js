@@ -16,7 +16,7 @@ inputbox.onkeyup = () => {
     add.style.display = "none";
   }
 };
-//
+
 add.onclick = () => {
   const task = {
     text: inputbox.value,
