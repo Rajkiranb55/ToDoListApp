@@ -1,0 +1,99 @@
+body {
+  background-color: aliceblue;
+}
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+.main-container {
+  background: #f2f1f1;
+  max-width: 450px;
+  width: 100%;
+  margin: 200px auto;
+  padding: 40px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+.header {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.inputbox {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 45px;
+  border-radius: 5px;
+  background: #eeefef;
+}
+.add-task {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  /* border-width: 1px;
+  border-radius: 10px; */
+  margin: 20px 0;
+  border: none;
+  background: transparent;
+}
+.inputbox input:focus {
+  outline: none;
+}
+.icon {
+  font-size: 1.5rem;
+  padding: 10px;
+}
+#addbutton {
+  display: none;
+}
+.task-stats {
+  display: flex;
+  justify-content: space-between;
+}
+input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+}
+hr {
+  border: none;
+  margin-top: 5px;
+  border-top: 1px dotted rgb(192, 187, 187);
+}
+.custum-checkbox {
+  top: 5px;
+  left: 5px;
+  height: 18px;
+  width: 18px;
+  width: 10%;
+  border-radius: 50%;
+  background-color: #eee;
+}
+
+/*Styling Delete button for task delete */
+li {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+li label {
+  width: 70%;
+  text-align: center;
+}
+#list {
+  margin-top: 25px;
+}
+.delete {
+  top: 5px;
+  left: 5px;
+  height: 18px;
+  width: 18px;
+  width: 10%;
+}
+.task-controls {
+  display: flex;
+  justify-content: space-between;
+}
