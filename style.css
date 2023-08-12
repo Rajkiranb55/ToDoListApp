@@ -97,3 +97,6 @@ li label {
   display: flex;
   justify-content: space-between;
 }
+.task-controls span:hover {
+  cursor: pointer;
+}
