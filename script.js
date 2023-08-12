@@ -77,6 +77,13 @@ function deleteTask(taskId) {
   });
 
   tasks = newTasks;
+  const total = tasks.length;
+  const completed = document.querySelectorAll(
+    'input[type="checkbox"]:checked'
+  ).length;
+  taskCounter.innerHTML = total;
+  CompletedtasksCounter.innerHTML = completed;
+  PendingtasksCounter.innerHTML = total - completed;
   renderList();
   calculate();
 }
@@ -100,7 +107,7 @@ function handleClicklistener(e) {
   const completed = document.querySelectorAll(
     'input[type="checkbox"]:checked'
   ).length;
-  totaltasks.innerHTML = total;
+  taskCounter.innerHTML = total;
   CompletedtasksCounter.innerHTML = completed;
   PendingtasksCounter.innerHTML = total - completed;
 }
@@ -127,6 +134,7 @@ function checked(params) {
   }
 }
 document.addEventListener("click", handleClicklistener);
+
 function calculate() {
   const total = tasks.length;
   const completed = document.querySelectorAll(
