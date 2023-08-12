@@ -11,7 +11,6 @@ const totalCounter = document.getElementById("taskCounter");
 inputbox.onkeyup = () => {
   let UserEnterValue = inputbox.value;
   if (UserEnterValue.trim() != 0) {
-    s;
     add.style.display = "block";
   } else {
     add.style.display = "none";
@@ -34,14 +33,6 @@ function addTask(task) {
     return;
   }
 }
-function renderList() {
-  taskList.innerHTML = "";
-
-  for (let i = 0; i < tasks.length; i++) {
-    addTaskToDom(tasks[i]);
-  }
-  calculate();
-}
 
 function addTaskToDom(task) {
   const li = document.createElement("li");
@@ -59,22 +50,13 @@ function addTaskToDom(task) {
   taskList.append(li);
   add.style.display = "none";
 }
-function handleClicklistener(e) {
-  const target = e.target;
-  console.log(target);
+function renderList() {
+  taskList.innerHTML = "";
 
-  if (target.className == "delete") {
-    const taskId = target.dataset.id;
-    deleteTask(taskId);
-    showNotification("clicked on delete ");
-
-    return;
-  } else if (target.className == "custum-checkbox") {
-    const taskId = target.id;
-    toggleTask(taskId);
-
-    return;
+  for (let i = 0; i < tasks.length; i++) {
+    addTaskToDom(tasks[i]);
   }
+  calculate();
 }
 
 function toggleTask(taskId) {
@@ -99,7 +81,23 @@ function deleteTask(taskId) {
 
   renderList();
 }
+function handleClicklistener(e) {
+  const target = e.target;
+  console.log(target);
 
+  if (target.className == "delete") {
+    const taskId = target.dataset.id;
+    deleteTask(taskId);
+    showNotification("clicked on delete ");
+
+    return;
+  } else if (target.className == "custum-checkbox") {
+    const taskId = target.id;
+    toggleTask(taskId);
+
+    return;
+  }
+}
 // Complete all task is used for completer all task
 document.querySelector(".complete").onclick = () => {
   checked(true);
@@ -108,7 +106,10 @@ document.querySelector(".complete").onclick = () => {
 document.querySelector(".uncomplete").onclick = () => {
   checked(false);
 };
-
+clearall.onclick = () => {
+  tasks = []; //empty the array
+  renderList();
+};
 function checked(params) {
   var inputElems = document.querySelectorAll(".custum-checkbox"); // Select selected task in list
   for (var i = 0; i < tasks.length; i++) {
@@ -120,10 +121,6 @@ function checked(params) {
   }
   calculate();
 }
-clearall.onclick = () => {
-  tasks = []; //empty the array
-  renderList();
-};
 document.addEventListener("click", handleClicklistener);
 
 function calculate() {
