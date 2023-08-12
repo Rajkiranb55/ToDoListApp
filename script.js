@@ -100,6 +100,7 @@ function handleClicklistener(e) {
   const completed = document.querySelectorAll(
     'input[type="checkbox"]:checked'
   ).length;
+  totaltasks.innerHTML = total;
   CompletedtasksCounter.innerHTML = completed;
   PendingtasksCounter.innerHTML = total - completed;
 }
@@ -113,6 +114,7 @@ document.querySelector(".uncomplete").onclick = () => {
 };
 clearall.onclick = () => {
   tasks = []; //empty the array
+  renderList();
 };
 function checked(params) {
   var inputElems = document.querySelectorAll(".custum-checkbox"); // Select selected task in list
@@ -130,6 +132,7 @@ function calculate() {
   const completed = document.querySelectorAll(
     'input[type="checkbox"]:checked'
   ).length;
+
   CompletedtasksCounter.innerHTML = completed;
   PendingtasksCounter.innerHTML = total - completed;
 }
