@@ -2,6 +2,9 @@
 
 A Simple To Do List App that is built in HTML , CSS , JAVASCRIPT which allows user to add ,delete,mark complete the tasks .
 
+## Demo
+
+Check out the live demo of the application at : https://rajkiranb55.github.io/ToDoListApp/
 ## Key Features
 
 - Add Tasks
@@ -40,9 +43,7 @@ A code editor (e.g. VS Code)
 
 3.JAVASCRIPT
 
-## Demo
 
-Check out the live demo of the application at : https://rajkiranb55.github.io/ToDoListApp/
 
 ## Authors
 
